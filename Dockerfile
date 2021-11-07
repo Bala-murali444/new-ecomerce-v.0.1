@@ -2,13 +2,13 @@ FROM python:3.7
 
 RUN mkdir /ecommerce-app
 
-COPY requierments.txt /ecommerce-app/
+COPY requierments.txt /app/
 
-WORKDIR /ecommerce-app
+WORKDIR /app
 
 RUN pip install -r requierments.txt
 
-COPY . /ecommerce-app/
+COPY . /app/
 
 EXPOSE 8000
 
