@@ -8,4 +8,11 @@ WORKDIR /ecommerce-app
 
 RUN pip install -r requierments.txt
 
-COPY . /ecommerce-appg/
+COPY . /ecommerce-app/
+
+EXPOSE 8000
+
+# runs the production server
+ENTRYPOINT ["python", "smart-pad/manage.py"]
+
+CMD ["runserver", "0.0.0.0:8000"]
