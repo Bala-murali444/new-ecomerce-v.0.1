@@ -1,18 +1,18 @@
-FROM python:3.7
+# pull the official base image
+FROM python:3.9.5-slim
 
-RUN mkdir /ecommerce-app
+ENV PYTHONUNBUFFERED 1
 
-COPY requierments.txt /app/
+RUN mkdir /code
 
-WORKDIR /app
+WORKDIR /code
 
-RUN pip install -r requierments.txt
+COPY requirements.txt /code/
 
-COPY . /app/
+RUN /usr/local/bin/python -m pip install --upgrade pip
 
-EXPOSE 8000
+RUN pip install --user -r requirements.txt
 
-# runs the production server
-ENTRYPOINT ["python", "smart-pad/manage.py"]
+COPY . /code/
 
-CMD ["runserver", "0.0.0.0:8000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
