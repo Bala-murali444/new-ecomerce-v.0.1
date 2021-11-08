@@ -1,7 +1,7 @@
 node {
     checkout scm
     docker.withRegistry('https://registry.hub.docker.com','docker-hub-ecom') {
-        def customImage = docker.build('9885614249/ecom-app-v.1.1')
+        def customImage = docker.build('9885614249/ecom-app')
         customImage.push()
 
     }
